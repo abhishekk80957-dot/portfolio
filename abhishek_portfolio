@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek K | Cybersecurity Portfolio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --red: #ff2d55;
+  --pink: #ff6b9d;
+  --purple: #8b2fc9;
+  --dark: #0d0010;
+  --card-bg: rgba(60, 0, 80, 0.45);
+  --border: rgba(255, 45, 85, 0.3);
+  --mono: 'Share Tech Mono', monospace;
+  --head: 'Rajdhani', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  background: #0d0010;
+  color: #f0d0ff;
+  font-family: var(--head);
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  background: rgba(13,0,16,0.97);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: var(--mono);
+  color: var(--red);
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.logo span { color: var(--pink); }
+
+.nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #c090e0;
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+.nav-btn:hover, .nav-btn.active {
+  border-color: var(--red);
+  color: var(--pink);
+  background: rgba(255,45,85,0.1);
+}
+
+/* PAGES */
+.page {
+  display: none;
+  padding: 60px 10%;
+  min-height: calc(100vh - 110px);
+  animation: fadeIn 0.35s ease;
+}
+.page.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-title {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--red);
+  letter-spacing: 2px;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.page-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+
+/* CARDS */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  border-radius: 8px;
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-3px); }
+
+.card h3 {
+  font-family: var(--mono);
+  color: var(--pink);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.card p, .card li {
+  color: #d0a0e8;
+  font-size: 14px;
+  line-height: 1.85;
+}
+.card ul { list-style: none; }
+.card .meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: #a060c0;
+  margin-top: 10px;
+}
+
+/* ABOUT — hero style */
+.about-hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid var(--red);
+  background: linear-gradient(135deg, #4a0080, #8b2fc9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 34px;
+  color: var(--pink);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 6px rgba(255,45,85,0.1);
+}
+.about-info h1 {
+  font-family: var(--mono);
+  font-size: 30px;
+  color: white;
+  margin-bottom: 6px;
+}
+.about-role {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--pink);
+  margin-bottom: 14px;
+  min-height: 24px;
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 13px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--pink);
+  background: rgba(255,45,85,0.08);
+}
+.resume-btn {
+  margin-top: 22px;
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 11px 28px;
+  background: linear-gradient(135deg, var(--red), var(--purple));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.resume-btn:hover { opacity: 0.85; }
+
+/* GRID CHIPS */
+.grid-chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+}
+.chip {
+  background: rgba(139,47,201,0.25);
+  border: 1px solid rgba(139,47,201,0.5);
+  border-radius: 8px;
+  padding: 20px 12px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: #e0b0ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.chip:hover {
+  border-color: var(--pink);
+  background: rgba(255,107,157,0.1);
+}
+.chip i { font-size: 26px; color: var(--pink); }
+
+.lang-chip {
+  background: rgba(255,45,85,0.12);
+  border: 1px solid rgba(255,107,157,0.4);
+  border-radius: 8px;
+  padding: 20px 12px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--pink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s;
+}
+.lang-chip:hover { background: rgba(255,45,85,0.22); }
+.lang-chip i { font-size: 28px; color: var(--red); }
+
+/* CONTACT */
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: #e0b0ff;
+  transition: border-color 0.2s;
+}
+.contact-row:hover { border-color: var(--pink); }
+.contact-row i { font-size: 28px; color: var(--pink); min-width: 32px; }
+.contact-label { font-size: 11px; color: #a060c0; margin-bottom: 3px; }
+
+/* CERT LIST */
+.cert-list { list-style: none; }
+.cert-list li {
+  padding: 14px 18px;
+  background: rgba(139,47,201,0.15);
+  border-left: 3px solid var(--purple);
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 12px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: #d0a0e8;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cert-list li i { color: var(--pink); font-size: 20px; }
+
+/* FOOTER */
+.scan-bar {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: #a060c0;
+  padding: 10px 40px;
+  background: rgba(13,0,16,0.97);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  margin-right: 7px;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.2; }
+}
+
+@media (max-width: 600px) {
+  nav { padding: 12px 16px; }
+  .page { padding: 30px 5%; }
+  .scan-bar { padding: 10px 16px; }
+  .about-hero { flex-direction: column; gap: 20px; }
+  .about-info h1 { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">[<span>AK</span>@sec]$</div>
+  <div class="nav-links">
+    <button class="nav-btn active"  onclick="show('about',this)">about</button>
+    <button class="nav-btn" onclick="show('education',this)">education</button>
+    <button class="nav-btn" onclick="show('skills',this)">skills</button>
+    <button class="nav-btn" onclick="show('programming',this)">programming</button>
+    <button class="nav-btn" onclick="show('languages',this)">languages</button>
+    <button class="nav-btn" onclick="show('certs',this)">certificates</button>
+    <button class="nav-btn" onclick="show('projects',this)">projects</button>
+    <button class="nav-btn" onclick="show('contact',this)">contact</button>
+  </div>
+</nav>
+
+<!-- ABOUT PAGE -->
+<div id="about" class="page active">
+  <div class="page-title">> about_me.txt</div>
+
+  <div class="about-hero">
+    <div class="avatar">AK</div>
+    <div class="about-info">
+      <h1>Abhishek K</h1>
+      <div class="about-role" id="typing-el">Cybersecurity Student_</div>
+      <div class="hero-tags">
+        <span class="tag">Red Team</span>
+        <span class="tag">Pen Testing</span>
+        <span class="tag">Digital Forensics</span>
+        <span class="tag">Cryptography</span>
+        <span class="tag">Wireshark</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>// Who I am</h3>
+    <p>I am an MCA student specializing in cybersecurity with a strong interest in ethical hacking,
+    network security, penetration testing, cryptography, and cyber defense.
+    I enjoy solving security challenges and building practical cybersecurity projects.</p>
+  </div>
+
+  <div class="card">
+    <h3>// Mission</h3>
+    <p>To protect digital infrastructure by mastering offensive and defensive security techniques —
+    from identifying vulnerabilities to implementing robust cyber defenses.</p>
+  </div>
+
+  <a href="resume.pdf" class="resume-btn" download>
+    <i class="ti ti-download"></i> Download Resume
+  </a>
+</div>
+
+<!-- EDUCATION PAGE -->
+<div id="education" class="page">
+  <div class="page-title">> education.log</div>
+
+  <div class="card">
+    <h3>Master of Computer Applications (MCA)</h3>
+    <p>PES University — Cybersecurity Specialization</p>
+    <div class="meta">$ duration: 2025 → Present</div>
+  </div>
+  <div class="card">
+    <h3>Bachelor's Degree (UG)</h3>
+    <p>Soundarya Institute of Management and Science</p>
+    <div class="meta">$ duration: 2021 → 2024</div>
+  </div>
+  <div class="card">
+    <h3>Pre-University (PUC / 12th)</h3>
+    <p>Sri Basaweshwara College</p>
+    <div class="meta">$ duration: 2018 → 2020</div>
+  </div>
+  <div class="card">
+    <h3>Secondary School (10th)</h3>
+    <p>Vivekananda Vidhyavardhaka High School</p>
+    <div class="meta">$ year: 2018</div>
+  </div>
+</div>
+
+<!-- SKILLS PAGE -->
+<div id="skills" class="page">
+  <div class="page-title">> skills --list</div>
+  <div class="grid-chips">
+    <div class="chip"><i class="ti ti-shield-lock"></i>Cybersecurity</div>
+    <div class="chip"><i class="ti ti-bug"></i>Ethical Hacking</div>
+    <div class="chip"><i class="ti ti-network"></i>Network Security</div>
+    <div class="chip"><i class="ti ti-sword"></i>Red Team</div>
+    <div class="chip"><i class="ti ti-terminal"></i>Linux</div>
+    <div class="chip"><i class="ti ti-search"></i>Digital Forensics</div>
+    <div class="chip"><i class="ti ti-wave-square"></i>Wireshark</div>
+    <div class="chip"><i class="ti ti-lock-access"></i>Pen Testing</div>
+  </div>
+</div>
+
+<!-- PROGRAMMING PAGE -->
+<div id="programming" class="page">
+  <div class="page-title">> programming --languages</div>
+  <div class="grid-chips">
+    <div class="chip"><i class="ti ti-brand-python"></i>Python</div>
+    <div class="chip"><i class="ti ti-database"></i>SQL</div>
+    <div class="chip"><i class="ti ti-code"></i>C#</div>
+  </div>
+</div>
+
+<!-- LANGUAGES PAGE -->
+<div id="languages" class="page">
+  <div class="page-title">> spoken --languages</div>
+  <div class="grid-chips">
+    <div class="lang-chip"><i class="ti ti-world"></i>English</div>
+    <div class="lang-chip"><i class="ti ti-world"></i>Hindi</div>
+    <div class="lang-chip"><i class="ti ti-world"></i>Telugu</div>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS PAGE -->
+<div id="certs" class="page">
+  <div class="page-title">> certifications.db</div>
+  <ul class="cert-list">
+    <li><i class="ti ti-certificate"></i>Cybersecurity Certification — Udemy</li>
+    <li><i class="ti ti-certificate"></i>UI/UX Design — Udemy</li>
+  </ul>
+</div>
+
+<!-- PROJECTS PAGE -->
+<div id="projects" class="page">
+  <div class="page-title">> projects --all</div>
+  <div class="card">
+    <h3><i class="ti ti-arrows-exchange"></i> ARP Simulation</h3>
+    <p>Simulation of ARP request and ARP reply communication demonstrating how devices resolve IP-to-MAC addresses in a local network.</p>
+    <div class="meta">$ tags: networking · protocol · simulation</div>
+  </div>
+  <div class="card">
+    <h3><i class="ti ti-key"></i> Password Strength Checker</h3>
+    <p>Tool to analyze and evaluate password security — checks entropy, common patterns, and provides actionable improvement tips.</p>
+    <div class="meta">$ tags: python · security · analysis</div>
+  </div>
+  <div class="card">
+    <h3><i class="ti ti-radar"></i> Network Scanner</h3>
+    <p>Host discovery and basic network reconnaissance tool — identifies active devices and open ports on a local subnet.</p>
+    <div class="meta">$ tags: recon · networking · python</div>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="contact" class="page">
+  <div class="page-title">> contact --info</div>
+  <div class="contact-row">
+    <i class="ti ti-mail"></i>
+    <div>
+      <div class="contact-label">email</div>
+      abhishek80957@gmail.com
+    </div>
+  </div>
+  <div class="contact-row">
+    <i class="ti ti-phone-call"></i>
+    <div>
+      <div class="contact-label">phone</div>
+      +91 8904979461
+    </div>
+  </div>
+</div>
+
+<div class="scan-bar">
+  <span><span class="dot"></span>system: online</span>
+  <span>© 2026 Abhishek K | Cybersecurity Portfolio</span>
+  <span>sec-portfolio v1.0</span>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+const roles = [
+  'Cybersecurity Student_',
+  'Ethical Hacker_',
+  'Network Security Learner_',
+  'Future Security Analyst_'
+];
+let ri = 0, ci = 0, deleting = false;
+const el = document.getElementById('typing-el');
+
+function typeLoop() {
+  const full = roles[ri];
+  if (!deleting) {
+    ci++;
+    el.textContent = full.slice(0, ci);
+    if (ci === full.length) { deleting = true; setTimeout(typeLoop, 1400); return; }
+  } else {
+    ci--;
+    el.textContent = full.slice(0, ci) + '_';
+    if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+  }
+  setTimeout(typeLoop, deleting ? 45 : 80);
+}
+typeLoop();
+</script>
+
+</body>
+</html>
